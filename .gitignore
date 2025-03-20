@@ -1,0 +1,70 @@
+# Maven
+target/
+*.jar
+*.war
+*.ear
+*.class
+*.log
+*.properties
+*.xml
+*.iml
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Node.js
+node_modules/
+dist/
+build/
+.vite/
+.vitepress/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Vite
+.vite/
+dist/
+
+# Tailwind CSS
+# (No specific files to ignore, but you might want to ignore generated CSS files if applicable)
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Other
+*.tgz
+*.zip
+*.tar.gz
+*.tar
+*.gz
+*.bak
+*.swp
+*.swo
+*.swn
+*.tmp
+*.temp
+
+# Coverage reports
+coverage/
