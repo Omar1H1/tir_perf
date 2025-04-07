@@ -1,4 +1,4 @@
-package fr.maif.tirperf;
+package fr.maif.tirperf.modelTest;
 
 import org.junit.jupiter.api.Test;
 

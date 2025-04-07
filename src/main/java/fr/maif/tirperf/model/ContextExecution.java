@@ -1,8 +1,12 @@
 package fr.maif.tirperf.model;
 
 
+import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Type;
+import org.hibernate.type.SqlTypes;
 
 
 @Entity
@@ -21,6 +25,8 @@ public class ContextExecution {
 
     private String environnement;
 
+    @Type(JsonBinaryType.class)
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private String infoComplementaires;
 }

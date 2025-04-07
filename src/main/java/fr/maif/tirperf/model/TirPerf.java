@@ -22,6 +22,10 @@ public class TirPerf {
     private java.sql.Timestamp tirperfDate;
 
     @ManyToOne
+    @JoinColumn(name = "applicatif_id")
+    private Applicatif applicatif;
+
+    @ManyToOne
     @JoinColumn(name = "rapport_id")
     private RapportExecution rapport;
 

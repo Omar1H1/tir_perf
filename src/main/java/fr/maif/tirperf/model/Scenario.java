@@ -20,6 +20,7 @@ public class Scenario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @Column(unique = true)
     private String reference;
     private String description;
 

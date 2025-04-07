@@ -1,4 +1,4 @@
-package fr.maif.tirperf;
+package fr.maif.tirperf.modelTest;
 
 import fr.maif.tirperf.model.Applicatif;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ public class ApplicatifTest {
   void testApplicatifCreation () {
 
     Applicatif applicatif = Applicatif.builder()
-    .Id(1L)
+    .id(1L)
     .intitule("MR")
     .build();
     assertEquals(1L, applicatif.getId());

@@ -1,0 +1,50 @@
+name: Build and Run Tests
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  install-java:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Install and Initialize PostgreSQL
+        uses: ikalnytskyi/action-setup-postgres@v6
+        with:
+          username: postgres
+          password: postgres
+          database: app
+          port: 5432
+          postgres-version: "16"
+          ssl: "on"
+        id: postgres
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Omar1H1_tir_perf
